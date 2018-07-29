@@ -1,4 +1,4 @@
-import {HeapSort, BinaryTreeSort, MergeSort} from "./esm";
+import {HeapSort, BinaryTreeSort, MergeSort, QuickSort} from "./esm";
 import {DeterministicUniqId} from 'deterministic-uniqid';
 import RandomSeed from 'random-seed';
 import test from 'ava';
@@ -48,6 +48,13 @@ test("MergeSort should correctly sort the input", t=>{
     const mgs = new MergeSort(testData);
     var actual = mgs.sort();
     var expected = testData.concat().sort((a,b) => {return (a < b)? -1 : 1});
+    t.deepEqual(actual, expected);
+});
+
+test("QuickSort should (quickly) sort the input", t=>{
+    const qs = new QuickSort(testData);
+    const actual = qs.sort();
+    const expected = testData.concat().sort((a,b) => {return (a < b)? -1 : 1});
     t.deepEqual(actual, expected);
 });
 
