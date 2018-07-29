@@ -1,1 +1,2 @@
-export {HeapSort} from './HeapSort'
+export {HeapSort} from './HeapSort';
+export {BinaryTreeSort} from './BinaryTreeSort'

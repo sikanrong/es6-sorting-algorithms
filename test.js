@@ -1,4 +1,5 @@
-import {HeapSort} from "./esm";
+import {HeapSort, BinaryTreeSort} from "./esm";
+import {DeterministicUniqId} from 'deterministic-uniqid';
 import RandomSeed from 'random-seed';
 import test from 'ava';
 
@@ -21,5 +22,25 @@ test("HeapSort will return a sorted array", t => {
         return (a > b)? -1 : 1;
     });
     t.deepEqual(sorted, expected);
+});
+
+test("BinaryTree sort should return a sorted version of the input data", t=>{
+    //build source data
+    var dig = new DeterministicUniqId(determinism_seed);
+    var btData = [];
+    testData.forEach(_k => {
+        btData.push({
+            key: _k,
+            value: dig.generateId()
+        })
+    });
+
+    var bts = new BinaryTreeSort(btData);
+    var actual = bts.sort();
+    var expected = btData.concat().sort((a,b) => {
+        return (a.key < b.key)? -1 : 1;
+    }).map(_n => { return _n.value});
+
+    t.deepEqual(actual, expected);
 });
 
