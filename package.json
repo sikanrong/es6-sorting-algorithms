@@ -1,0 +1,48 @@
+{
+  "name": "es6-sorting-algorithms",
+  "version": "0.0.0",
+  "author": "Alexander Pilafian <sikanrong@gmail.com>",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+
+  "scripts": {
+    "build": "babel esm --out-dir cjs",
+    "prepublish": "npm run build",
+    "install": "npm run build",
+    "test": "ava --tap test.js"
+  },
+
+  "dependencies": {
+    "es6-data-structures": "git://github.com/sikanrong/es6-data-structures.git"
+  },
+
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "ava": "^0.21.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.5.1",
+    "babel-register": "^6.24.1",
+    "tap-nyan": "^1.1.0",
+    "random-seed": "^0.3.0"
+  },
+
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  }
+}
